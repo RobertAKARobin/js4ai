@@ -1,0 +1,66 @@
+/version 3
+/name [ 21
+	44656c657465204f7665726c617020416374696f6e
+]
+/isOpen 0
+/actionCount 1
+/action-1 {
+	/name [ 14
+		44656c657465204f7665726c6170
+	]
+	/keyIndex 0
+	/colorIndex 0
+	/isOpen 0
+	/eventCount 3
+	/event-1 {
+		/useRulersIn1stQuadrant 0
+		/internalName (ai_plugin_planetx)
+		/localizedName [ 10
+			4c697665205061696e74
+		]
+		/isOpen 0
+		/isOn 1
+		/hasDialog 0
+		/parameterCount 1
+		/parameter-1 {
+			/key 1835363957
+			/showInPalette -1
+			/type (enumerated)
+			/name [ 4
+				4d616b65
+			]
+			/value 1
+		}
+	}
+	/event-2 {
+		/useRulersIn1stQuadrant 0
+		/internalName (ai_plugin_planetx)
+		/localizedName [ 10
+			4c697665205061696e74
+		]
+		/isOpen 0
+		/isOn 1
+		/hasDialog 0
+		/parameterCount 1
+		/parameter-1 {
+			/key 1835363957
+			/showInPalette -1
+			/type (enumerated)
+			/name [ 6
+				457870616e64
+			]
+			/value 3
+		}
+	}
+	/event-3 {
+		/useRulersIn1stQuadrant 0
+		/internalName (adobe_ungroup)
+		/localizedName [ 7
+			556e67726f7570
+		]
+		/isOpen 0
+		/isOn 1
+		/hasDialog 0
+		/parameterCount 0
+	}
+}
