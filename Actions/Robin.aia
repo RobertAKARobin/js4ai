@@ -3,7 +3,7 @@
 	526f62696e
 ]
 /isOpen 1
-/actionCount 4
+/actionCount 5
 /action-1 {
 	/name [ 9
 		426f78206564676573
@@ -261,5 +261,168 @@
 		/isOn 1
 		/hasDialog 0
 		/parameterCount 0
+	}
+}
+/action-5 {
+	/name [ 8
+		416374696f6e2031
+	]
+	/keyIndex 0
+	/colorIndex 0
+	/isOpen 1
+	/eventCount 2
+	/event-1 {
+		/useRulersIn1stQuadrant 0
+		/internalName (ai_plugin_setStroke)
+		/localizedName [ 10
+			536574205374726f6b65
+		]
+		/isOpen 0
+		/isOn 1
+		/hasDialog 0
+		/parameterCount 9
+		/parameter-1 {
+			/key 2003072104
+			/showInPalette 4294967295
+			/type (unit real)
+			/value 1.0
+			/unit 592476268
+		}
+		/parameter-2 {
+			/key 1667330094
+			/showInPalette 4294967295
+			/type (enumerated)
+			/name [ 8
+				4275747420436170
+			]
+			/value 0
+		}
+		/parameter-3 {
+			/key 1836344690
+			/showInPalette 4294967295
+			/type (real)
+			/value 10.0
+		}
+		/parameter-4 {
+			/key 1785686382
+			/showInPalette 4294967295
+			/type (enumerated)
+			/name [ 10
+				4d69746572204a6f696e
+			]
+			/value 0
+		}
+		/parameter-5 {
+			/key 1684825454
+			/showInPalette 4294967295
+			/type (integer)
+			/value 2
+		}
+		/parameter-6 {
+			/key 1685284913
+			/showInPalette 4294967295
+			/type (unit real)
+			/value 10.0
+			/unit 592476268
+		}
+		/parameter-7 {
+			/key 1685284914
+			/showInPalette 4294967295
+			/type (unit real)
+			/value 15.0
+			/unit 592476268
+		}
+		/parameter-8 {
+			/key 1684104298
+			/showInPalette 4294967295
+			/type (boolean)
+			/value 0
+		}
+		/parameter-9 {
+			/key 1634494318
+			/showInPalette 4294967295
+			/type (enumerated)
+			/name [ 6
+				43656e746572
+			]
+			/value 0
+		}
+	}
+	/event-2 {
+		/useRulersIn1stQuadrant 0
+		/internalName (ai_plugin_setStroke)
+		/localizedName [ 10
+			536574205374726f6b65
+		]
+		/isOpen 0
+		/isOn 1
+		/hasDialog 0
+		/parameterCount 9
+		/parameter-1 {
+			/key 2003072104
+			/showInPalette 4294967295
+			/type (unit real)
+			/value 1.0
+			/unit 592476268
+		}
+		/parameter-2 {
+			/key 1667330094
+			/showInPalette 4294967295
+			/type (enumerated)
+			/name [ 8
+				4275747420436170
+			]
+			/value 0
+		}
+		/parameter-3 {
+			/key 1836344690
+			/showInPalette 4294967295
+			/type (real)
+			/value 10.0
+		}
+		/parameter-4 {
+			/key 1785686382
+			/showInPalette 4294967295
+			/type (enumerated)
+			/name [ 10
+				4d69746572204a6f696e
+			]
+			/value 0
+		}
+		/parameter-5 {
+			/key 1684825454
+			/showInPalette 4294967295
+			/type (integer)
+			/value 2
+		}
+		/parameter-6 {
+			/key 1685284913
+			/showInPalette 4294967295
+			/type (unit real)
+			/value 9.0
+			/unit 592476268
+		}
+		/parameter-7 {
+			/key 1685284914
+			/showInPalette 4294967295
+			/type (unit real)
+			/value 15.0
+			/unit 592476268
+		}
+		/parameter-8 {
+			/key 1684104298
+			/showInPalette 4294967295
+			/type (boolean)
+			/value 0
+		}
+		/parameter-9 {
+			/key 1634494318
+			/showInPalette 4294967295
+			/type (enumerated)
+			/name [ 6
+				43656e746572
+			]
+			/value 0
+		}
 	}
 }
