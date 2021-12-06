@@ -1,58 +1,58 @@
-var dialog = new Window('dialog', 'Right-angle gear');
+#target "illustrator"
+#include "lib.js"
 
-function input(message, value) {
-  var group = dialog.add('group');
-  group.add('statictext', undefined, message.toString());
-  return group.add('edittext', [0, 0, 200, 20], value);
-}
+var dialog = createDialog('Every n points');
+var inputTeeth = dialog.input('Number of teeth', 10);
+var inputRadius = dialog.input('Radius', 25);
 
-function button(message) {
-  var group = dialog.add('group');
-  group.add('button', undefined, 'OK');
-}
+dialog.onShow(function() {
+  inputTeeth = Number(inputTeeth.text);
+  inputRadius = Number(inputRadius.text);
 
-function toDegrees(radians) {
-  return radians * (180 / Math.PI);
-}
+  var outerRadius = inputRadius;
+  var innerAngle = (360 / inputTeeth);
+  var innerRadius = inputRadius * Math.cos(toRadians(innerAngle));
 
-function toRadians(degrees) {
-  return degrees * (Math.PI / 180);
-}
-
-var inputTeeth = input('Number of teeth', 10);
-var inputRadius = input('Radius', 25);
-var submit = button('OK');
-
-if (dialog.show() === 1) {
-  var inputTeeth = Number(inputTeeth.text);
-  var inputRadius = Number(inputRadius.text);
-  var adjacentMultiplier = Math.cos(toRadians(360 / inputTeeth));
-  var adjacentLength = adjacentMultiplier * inputRadius;
-
-  var gearBoundary = app.activeDocument.pathItems.ellipse(
+  var circumferenceGuide = app.activeDocument.pathItems.ellipse(
     0, // top
     0, // left
-    inputRadius * 2, // width,
-    inputRadius * 2, // height
+    outerRadius * 2, // width,
+    outerRadius * 2, // height
   );
-  gearBoundary.guides = true;
+  circumferenceGuide.guides = true;
+
+  var verticalGuide = app.activeDocument.pathItems.add();
+  verticalGuide.setEntirePath([
+    [outerRadius, 0],
+    [outerRadius, 0 - outerRadius * 2]
+  ]);
+  verticalGuide.guides = true;
+
+  var horizontalGuide = app.activeDocument.pathItems.add();
+  horizontalGuide.setEntirePath([
+    [0, 0 - outerRadius],
+    [outerRadius * 2, 0 - outerRadius],
+  ]);
+  horizontalGuide.guides = true;
 
   var gearPath = app.activeDocument.pathItems.star(
-    inputRadius, // centerX
-    0 - inputRadius, // centerY
-    inputRadius, // radius
-    adjacentLength, // inner radius
+    outerRadius, // centerX
+    0 - outerRadius, // centerY
+    outerRadius, // radius
+    innerRadius, // inner radius
     inputTeeth, // points
   );
 
-  var points = gearPath.pathPoints;
-  for (var index = 0; index < points.length; index++) {
-    var point = points[index];
-    if (index % 2 !== 0) {
-      point.selected = PathPointSelection.ANCHORPOINT;
-    }
-  }
-  app.executeMenuCommand('transformrotate');
-} else {
-  dialog.hide();
-}
+  everyNPoints({
+    target: gearPath,
+    interval: 2,
+  }); // Rotate by ((360 / innerAngle) / 2)
+
+  /**
+   * Tried using app.executeMenuCommand('transformrotate'), but can't specify parameters.
+   * Must manually:
+   * 1. Click 'Rotate'
+   * 2. Click center of gear to specify rotation point -- sometimes it isn't the physical center of the gear
+   * 3. Rotate
+   */
+});
