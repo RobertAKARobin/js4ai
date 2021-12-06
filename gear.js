@@ -35,24 +35,44 @@ dialog.onShow(function() {
   ]);
   horizontalGuide.guides = true;
 
-  var gearPath = app.activeDocument.pathItems.star(
-    outerRadius, // centerX
-    0 - outerRadius, // centerY
-    outerRadius, // radius
-    innerRadius, // inner radius
-    inputTeeth, // points
+  var outerPointsPath = app.activeDocument.pathItems.polygon(
+    outerRadius,
+    0 - outerRadius,
+    outerRadius,
+    inputTeeth,
   );
+  var outerPoints = outerPointsPath.pathPoints;
 
-  everyNPoints({
-    target: gearPath,
-    interval: 2,
-  }); // Rotate by ((360 / innerAngle) / 2)
+  var innerPointsPath = app.activeDocument.pathItems.polygon(
+    outerRadius,
+    0 - outerRadius,
+    innerRadius,
+    inputTeeth,
+  );
+  var innerPoints = innerPointsPath.pathPoints;
 
-  /**
-   * Tried using app.executeMenuCommand('transformrotate'), but can't specify parameters.
-   * Must manually:
-   * 1. Click 'Rotate'
-   * 2. Click center of gear to specify rotation point -- sometimes it isn't the physical center of the gear
-   * 3. Rotate
-   */
+  var gearPath = [];
+
+  for (var index = 0; index < outerPoints.length; index++) {
+    var outerPoint = outerPoints[index];
+    var innerPoint = innerPoints[index];
+    gearPath.push(outerPoint.anchor);
+    gearPath.push(innerPoint.anchor);
+  }
+
+  var gear = app.activeDocument.pathItems.add();
+  gear.setEntirePath(gearPath);
+
+  outerPointsPath.remove();
+  innerPointsPath.remove();
+
+  gear.selected = true;
+  app.executeMenuCommand('join');
+
+  circumferenceGuide.selected = true;
+  verticalGuide.selected = true;
+  horizontalGuide.selected = true;
+  gear.selected = true;
+
+  app.executeMenuCommand('group');
 });
